@@ -5,6 +5,8 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return  Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth / 3.8),
               child: Row(
