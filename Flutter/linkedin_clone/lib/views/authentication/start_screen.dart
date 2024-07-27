@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:linkedin_clone/views/widgets/Buttoms/CustomSignInButton.dart';
+import 'package:linkedin_clone/views/widgets/Buttoms/primary_puttom.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
 class start_screen extends StatelessWidget {
@@ -65,20 +66,12 @@ class start_screen extends StatelessWidget {
                         fontSize: screenWidth / 35, color: Colors.black),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: screenWidth / 50),
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: screenWidth / 3.25),
-                          backgroundColor: Colors.blue[900],
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          "Agree & Join",
-                          style: TextStyle(
-                              color: Colors.white, fontSize: screenWidth / 22),
-                        )),
-                  ),
+                      padding: EdgeInsets.symmetric(vertical: screenWidth / 50),
+                      child: primary_puttom(
+                        width: screenWidth / 3.25,
+                        fontSize: screenWidth / 22,
+                        text: "Agree & Join",
+                      )),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: screenWidth / 50),
                     child: CustomSignInButton(
