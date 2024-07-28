@@ -143,7 +143,7 @@ class _signin_ScrenState extends State<signin_Scren> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 20),
+                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 25),
                     child: input_textformfield(
                       ischow: true,
                       labelText: "Password",
@@ -167,6 +167,7 @@ class _signin_ScrenState extends State<signin_Scren> {
                 height: screenHeight / 30,
               ),
               primary_puttom(
+                onPressed:() {},
                 fontSize: screenWidth / 22,
                 text: "Continue",
                 width: screenWidth / 2.77,

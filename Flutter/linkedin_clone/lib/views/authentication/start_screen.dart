@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:linkedin_clone/views/widgets/Buttoms/CustomSignInButton.dart';
 import 'package:linkedin_clone/views/widgets/Buttoms/primary_puttom.dart';
-import 'package:sign_in_button/sign_in_button.dart';
 
 class start_screen extends StatelessWidget {
   const start_screen({super.key});
@@ -68,6 +67,7 @@ class start_screen extends StatelessWidget {
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: screenWidth / 50),
                       child: primary_puttom(
+                        onPressed: () {},
                         width: screenWidth / 3.25,
                         fontSize: screenWidth / 22,
                         text: "Agree & Join",
@@ -86,7 +86,7 @@ class start_screen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: screenWidth / 50),
                     child: CustomSignInButton(
                       assetName: 'assets/images/facepook icon.png',
-                      text: 'Continue with Google',
+                      text: 'Continue with facebook',
                       onPressed: () {},
                       width: screenWidth / 4.5,
                       hight: 0,

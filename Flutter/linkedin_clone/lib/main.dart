@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/views/authentication/join_linkedin.dart';
 import 'package:linkedin_clone/views/authentication/sign_in.dart';
 import 'package:linkedin_clone/views/authentication/start_screen.dart';
 
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-     
-      home:  signin_Scren(),
+      home: start_screen(),
     );
   }
 }
-
