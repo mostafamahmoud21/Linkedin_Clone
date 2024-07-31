@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/views/Buttom_navegationpar/ButtomNavegation_par.dart';
 import 'package:linkedin_clone/views/authentication/Add_emailorphone.dart';
 import 'package:linkedin_clone/views/authentication/Add_name.dart';
 import 'package:linkedin_clone/views/authentication/join_linkedin.dart';
@@ -16,8 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Color.fromARGB(179, 91, 90, 90),
+      )),
       debugShowCheckedModeBanner: false,
-      home: Add_emailorphone(),
+      home: BottomNavigationPar(),
     );
   }
 }
