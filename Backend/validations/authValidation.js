@@ -13,4 +13,5 @@ const loginSchema = Joi.object({
     phone: Joi.string().pattern(/^[0-9]+$/).optional(),
     password: Joi.string().min(6).required()
 }).or('email', 'phone');
-module.exports = {registerSchema,loginSchema};
+
+module.exports = { registerSchema, loginSchema };

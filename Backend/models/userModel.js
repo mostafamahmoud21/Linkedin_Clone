@@ -37,13 +37,33 @@ const { Schema } = mongoose;
 // });
 
 const userSchema = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    email: { type: String, unique: true, sparse: true },
-    phone: { type: String, unique: true, sparse: true },
-    password: { type: String, required: true, minlength: 6 },
-    createdAt: { type: Date, default: Date.now }
-});
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, unique: true, sparse: true },
+  phone: { type: String, unique: true, sparse: true },
+  googleId: { type: String, unique: true, sparse: true },
+  password: { type: String, required: false, minlength: 6 },
+  profilePicture: { type: String },
+  resetPasswordToken: { type: String },
+  //resetPasswordExpires: Date,
+  skills: [{ type: String }],
+  experience: [{
+    jobTitle: String,
+    company: String,
+    startDate: Date,
+    endDate: Date,
+    description: String
+  }],
+  education: [{
+    degree: String,
+    institution: String,
+    startDate: Date,
+    endDate: Date
+  }],
+  connections: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  notifications: [{ type: Schema.Types.ObjectId, ref: 'Notification' }]
+}, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
 
