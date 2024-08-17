@@ -8,5 +8,10 @@ postRouters.post('/posts', verifyToken, validation(validationSchema.postSchema),
 postRouters.put('/posts/:id', verifyToken, validation(validationSchema.postSchema), postController.updatePost);
 postRouters.delete('/posts/:id', verifyToken, postController.deletePost);
 
+postRouters.post('/posts/comment/:id', verifyToken, postController.addComment);
+postRouters.put('/posts/comment/:id', verifyToken, postController.updateComment);
+postRouters.delete('/posts/comment/:id', verifyToken, postController.deleteComment);
+
+postRouters.delete('/posts/likes/:id', verifyToken, postController.deleteComment);
 module.exports = postRouters
 
