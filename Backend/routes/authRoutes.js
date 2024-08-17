@@ -5,7 +5,7 @@ const validation = require('../middlewares/validations.js')
 const authRouters = require('express').Router()
 const { registerSchema, loginSchema } = require('../validations/authValidation.js')
 
-authRouters.post('/register', validation(registerSchema), authControllers.register)
+authRouters.post('/register',  validation(registerSchema),authControllers.register)
 authRouters.post('/login', validation(loginSchema), authControllers.login)
 authRouters.post('/forgot-password', authControllers.forgetPassword)
 authRouters.post('/reset-password/:token', authControllers.resetPassword)
