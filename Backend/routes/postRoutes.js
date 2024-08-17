@@ -12,6 +12,6 @@ postRouters.post('/posts/comment/:id', verifyToken, postController.addComment);
 postRouters.put('/posts/comment/:id', verifyToken, postController.updateComment);
 postRouters.delete('/posts/comment/:id', verifyToken, postController.deleteComment);
 
-postRouters.delete('/posts/likes/:id', verifyToken, postController.deleteComment);
+postRouters.post('/posts/:id/likes', verifyToken, postController.deleteComment);
 module.exports = postRouters
 
