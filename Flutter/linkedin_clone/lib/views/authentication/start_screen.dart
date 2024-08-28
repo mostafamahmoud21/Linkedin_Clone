@@ -88,7 +88,7 @@ class start_screen extends StatelessWidget {
                       assetName: 'assets/images/facepook icon.png',
                       text: 'Continue with facebook',
                       onPressed: () {},
-                      width: screenWidth / 4.5,
+                      width: screenWidth / 5.1,
                       hight: 0,
                     ),
                   ),
