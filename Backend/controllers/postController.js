@@ -165,7 +165,6 @@ exports.deleteComment = async (req, res) => {
 };
 
 // Add Likes
-// controllers/postController.js
 exports.addLike = async (req, res) => {
     try {
         const userId = req.user.userId;

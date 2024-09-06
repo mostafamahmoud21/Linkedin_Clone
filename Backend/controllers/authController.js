@@ -7,12 +7,13 @@ const register = async (req, res, next) => {
     const { firstName, lastName, email, phone, password } = req.body;
 
     try {
-        let user;
-        if (email) {
-            user = await User.findOne({ email });
-        } else if (phone) {
-            user = await User.findOne({ phone });
-        }
+        let user = await User.findOne({ email }).or([{ phone }]);
+        console.log(user)
+        // if (email) {
+        //     user = await User.findOne({ email });
+        // } else if (phone) {
+        //     user = await User.findOne({ phone });
+        // }
 
         if (user) {
             return res.status(400).json({ message: "User already exists" });
@@ -28,24 +29,25 @@ const register = async (req, res, next) => {
             { expiresIn: '1h' }
         );
 
-        if(user.email){
+        if (user.email) {
             sendMail(user.email, 'Welcome to LinkedIn', 'Thank you for joining our platform!');
         }
         return res.status(200).json({ message: 'Sign Up Successfully', token: accessToken, user });
     } catch (error) {
-        return res.status(500).json({ message: 'server error'});
+        console.log(error)
+        return res.status(500).json({ message: 'server error' });
     }
 };
 
 const login = async (req, res, next) => {
     const { email, phone, password } = req.body;
     try {
-        let user;
-        if (email) {
-            user = await User.findOne({ email });
-        } else if (phone) {
-            user = await User.findOne({ phone });
-        }
+        let user = await User.findOne({ email: email }).or([{ phone: phone }]);
+        // if (email) {
+        //     user = await User.findOne({ email });
+        // } else if (phone) {
+        //     user = await User.findOne({ phone });
+        // }
 
         if (!user) {
             return res.status(400).json({ message: "User Not Found" });
@@ -65,7 +67,7 @@ const login = async (req, res, next) => {
 
         return res.status(200).json({ message: 'Login successful', token, user });
     } catch (error) {
-        return res.status(500).json({ message: 'server error'});
+        return res.status(500).json({ message: 'server error' });
     }
 };
 
@@ -90,7 +92,7 @@ const forgetPassword = async (req, res, next) => {
         sendMail(user.email, 'Password Reset', message);
         res.status(200).json({ message: 'Reset password email sent' });
     } catch (error) {
-        return res.status(500).json({ message: 'server error'});
+        return res.status(500).json({ message: 'server error' });
     }
 };
 
