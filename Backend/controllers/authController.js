@@ -8,7 +8,7 @@ const register = async (req, res, next) => {
 
     try {
         let user = await User.findOne({ email }).or([{ phone }]);
-        console.log(user)
+        // console.log(user)
         // if (email) {
         //     user = await User.findOne({ email });
         // } else if (phone) {
@@ -24,7 +24,7 @@ const register = async (req, res, next) => {
         await user.save();
 
         const accessToken = jwt.sign(
-            { userId: user._id, firstName: user.firstName, lastName: user.lastName },
+            { userId: user._id, firstName: user.firstName, lastName: user.lastName,role:user.role },
             process.env.JWT_SECRET_KEY,
             { expiresIn: '1h' }
         );
@@ -60,7 +60,7 @@ const login = async (req, res, next) => {
         }
 
         const token = jwt.sign(
-            { userId: user._id, firstName: user.firstName, lastName: user.lastName },
+            { userId: user._id, firstName: user.firstName, lastName: user.lastName,role:user.role },
             process.env.JWT_SECRET_KEY,
             { expiresIn: '1h' }
         );

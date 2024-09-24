@@ -80,7 +80,10 @@ exports.deletePost = async (req, res) => {
             { $pull: { posts: post._id } },
             { new: true }
         );
+        if (post.image) {
+            await uploadImage.deleteimage(post.image);
 
+        }
         await Comment.deleteMany({ postId: post._id });
 
         res.status(200).json({ message: "Post deleted successfully" });

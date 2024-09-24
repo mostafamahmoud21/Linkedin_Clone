@@ -12,6 +12,8 @@ const connectionRouters = require('./routes/connectionRouters.js');
 const socketHandler = require('./utils/socket.js');
 const path = require('path');
 const messageRouters = require('./routes/messageRouters.js');
+const companyRouters = require('./routes/companyAccountRouters.js');
+const PostCompanyRouters = require('./routes/PostCompanyRouters.js');
 
 const app = express();
 const server = http.createServer(app);
@@ -30,6 +32,8 @@ app.use('/api/user', userRouters);
 app.use('/api/posts', postRouters);
 app.use('/api/connections', connectionRouters);
 app.use('/api/messages', messageRouters);
+app.use('/api', companyRouters);
+app.use('/api',PostCompanyRouters)
 
 socketHandler(io);
 app.use(express.static(path.join(__dirname, 'public')));
