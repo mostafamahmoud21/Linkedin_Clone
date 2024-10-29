@@ -1,4 +1,5 @@
 const Company = require('../models/companyModel.js');
+const { populate } = require('../models/postModel.js');
 const User = require('../models/userModel.js');
 const uploadImage = require('../utils/uploadImage.js');
 
@@ -162,25 +163,39 @@ exports.deleteBusinessAccount = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
     try {
-      const id = req.params.id;
-      
-      const profile = await Company.findById(id)
-        .populate({
-          path: 'posts',
-          select: '-_id', 
-          populate: { path: 'comments likes', select: 'content -_id' } 
-        })
-  
-      if (!profile) {
-        return res.status(404).json({ message: 'Profile not found' });
-      }
-  
-      res.json({companyName: profile.name,profile});
-      
+        const id = req.params.id;
+
+        const profile = await Company.findById(id)
+            .populate({
+                path: 'posts',
+                select: '-_id',
+                populate: [{
+                    path: 'comments',
+                    select: 'comment',
+                    populate: {
+                        path: 'user',
+                        select: 'name -_id'
+                    }
+                },
+                {
+                    path: 'likes',
+                    populate: {
+                        path: 'user',
+                        select: 'name -_id'
+                    }
+                },
+                ],
+            })
+
+        if (!profile) {
+            return res.status(404).json({ message: 'Profile not found' });
+        }
+
+        res.json({ profile });
+
     } catch (error) {
-      console.error(`Error fetching profile with id ${req.params.id}: `, error);
-      res.status(500).json({ message: 'Server error', error });
+        console.error(`Error fetching profile with id ${req.params.id}: `, error);
+        res.status(500).json({ message: 'Server error', error });
     }
-  };
-  
-  
+};
+
