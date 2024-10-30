@@ -19,7 +19,7 @@ const jobSchema = new Schema({
   },
   deadline: { type: Date},
   postedById: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  appliedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }]
 }, { timestamps: true });
 
 module.exports = mongoose.model('Job', jobSchema);
